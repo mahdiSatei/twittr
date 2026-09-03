@@ -26,7 +26,7 @@ export default function Navbar({ currentUser }: NavbarProps) {
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
       <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/explore" className="text-xl font-bold text-blue-500 tracking-tight flex items-center gap-2">
-          <span>chirp</span>
+          <span>XPart</span>
         </Link>
 
         <nav className="flex items-center gap-3">
