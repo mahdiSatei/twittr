@@ -7,11 +7,13 @@
     "build": "next build",
     "start": "next start",
     "typeorm": "typeorm-ts-node-commonjs",
+    "mcp": "tsx src/mcp/server.ts",
     "migration:run": "typeorm-ts-node-commonjs migration:run -d ./src/lib/db/data-source.ts",
     "migration:revert": "typeorm-ts-node-commonjs migration:revert -d ./src/lib/db/data-source.ts",
     "migration:generate": "typeorm-ts-node-commonjs migration:generate -d ./src/lib/db/data-source.ts"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
     "bcryptjs": "^2.4.3",
     "clsx": "^2.1.1",
     "dotenv": "^17.4.2",
@@ -36,6 +38,7 @@
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14",
     "ts-node": "^10.9.2",
+    "tsx": "^4.23.13",
     "typescript": "^5.6.3"
   }
 }
