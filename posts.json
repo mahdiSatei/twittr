@@ -1,0 +1,167 @@
+[
+  {
+    "text": "اگر Audit Log را داخل همان تراکنش اصلی ذخیره کنیم، کندی یا قطعی سرویس لاگ می‌تواند عملیات اصلی را متوقف کند. برای اکشن‌های غیرحیاتی، ثبت Audit را به‌صورت asynchronous و خارج از مسیر اصلی انجام دهید. #software-engineering #audit-log #architecture #backend"
+  },
+  {
+    "text": "Transaction مرز مشخصی برای اتمیک بودن عملیات است، نه راه‌حلی برای همه مشکلات. هرچه Transaction طولانی‌تر باشد، lockها می‌توانند مدت بیشتری منابع را درگیر کنند. #database #postgresql #transaction #software-engineering"
+  },
+  {
+    "text": "قبل از اضافه کردن microservice، ببینید واقعاً چه مرز مستقلی در دامنه کسب‌وکار دارید. تقسیم یک monolith بدون مرز درست فقط پیچیدگی توزیع‌شده تولید می‌کند. #architecture #microservices #distributed-systems"
+  },
+  {
+    "text": "Index رایگان نیست؛ خواندن را سریع‌تر می‌کند اما هزینه نوشتن و فضای ذخیره‌سازی را افزایش می‌دهد. Index را بر اساس queryهای واقعی طراحی کنید، نه صرفاً بر اساس تعداد ستون‌ها. #database #postgresql #indexing #performance"
+  },
+  {
+    "text": "اگر API شما idempotent نباشد، retry کردن درخواست ممکن است همان عملیات را دوباره اجرا کند. برای عملیات حساس، رفتار تکرارپذیر را از ابتدا در طراحی API در نظر بگیرید. #api #backend #distributed-systems #reliability"
+  },
+  {
+    "text": "Log، Metric و Trace یک چیز نیستند. Log برای رخدادها، Metric برای اندازه‌گیری وضعیت و Trace برای دنبال کردن مسیر یک درخواست در سیستم توزیع‌شده کاربرد دارد. #observability #logging #monitoring #distributed-systems"
+  },
+  {
+    "text": "Queue فقط برای افزایش throughput نیست. یکی از کاربردهای مهم آن جدا کردن producer از consumer و جلوگیری از قفل شدن مسیر اصلی هنگام پردازش‌های کند است. #architecture #queue #backend #scalability"
+  },
+  {
+    "text": "اگر تست فقط happy path را پوشش دهد، احتمالاً مهم‌ترین خطاهای سیستم را نمی‌بینید. سناریوهای failure، timeout، retry و داده نامعتبر را هم تست کنید. #testing #software-engineering #quality"
+  },
+  {
+    "text": "Database constraint فقط برای زیبایی schema نیست. اگر یک قانون کسب‌وکار واقعاً باید همیشه برقرار باشد، بخشی از تضمین آن را می‌توان در خود دیتابیس enforce کرد. #database #postgresql #data-integrity"
+  },
+  {
+    "text": "یک feature خوب لزوماً feature بزرگی نیست. اگر یک مشکل واقعی کاربر را با کمترین پیچیدگی حل کند، می‌تواند از ده‌ها قابلیت تزئینی ارزشمندتر باشد. #product #product-management #startup"
+  },
+  {
+    "text": "قبل از ساختن feature، مسئله را دقیق تعریف کنید. Requirement باید به شکلی نوشته شود که بتوان درباره کامل بودن و درست بودن خروجی آن صحبت کرد. #product #requirements #software-engineering"
+  },
+  {
+    "text": "Password را هیچ‌وقت به شکل plain text ذخیره نکنید. Authentication خوب فقط به Login موفق محدود نیست؛ مدیریت session، expiration و revoke کردن credential هم بخشی از آن است. #security #authentication #backend"
+  },
+  {
+    "text": "وقتی می‌گویی «فقط یک تغییر کوچیکه»، سیستم از آن طرف آرام‌آرام یک RFC پنجاه‌صفحه‌ای آماده می‌کند. #fun #programming #developer-life"
+  },
+  {
+    "text": "Bug ساعت ۱۰ صبح: یک null ساده. Bug ساعت ۲ صبح: اثری از تمدن در stack trace باقی نمانده است. #fun #debugging #developer-life"
+  },
+  {
+    "text": "مهندس نرم‌افزار: «این قسمت را بعداً refactor می‌کنیم.» تاریخچه پروژه: آن «بعداً» هیچ‌وقت نرسید. #fun #technical-debt #programming"
+  },
+  {
+    "text": "رشد استفاده از هوش مصنوعی در توسعه نرم‌افزار، بحث مهارت‌های مهندسی را مهم‌تر کرده است؛ تولید کد سریع‌تر شده اما تصمیم‌گیری معماری همچنان مسئله اصلی است. #ai #technology #software-engineering"
+  },
+  {
+    "text": "رشد زیرساخت‌های ابری باعث شده بسیاری از تیم‌ها به جای خرید سخت‌افزار، ظرفیت محاسباتی را بر اساس نیاز مصرف کنند. #technology #cloud #infrastructure"
+  },
+  {
+    "text": "سیاست‌گذاری عمومی در حوزه فناوری معمولاً بین نوآوری، حریم خصوصی و امنیت باید تعادل ایجاد کند و تصمیم‌ها می‌توانند اثر بلندمدت داشته باشند. #politics #technology #privacy"
+  },
+  {
+    "text": "بحث درباره تنظیم‌گری پلتفرم‌های بزرگ فناوری در بسیاری از کشورها حول قدرت بازار، رقابت و حفاظت از کاربران شکل گرفته است. #politics #technology #regulation"
+  },
+  {
+    "text": "برای یادگیری PostgreSQL فقط syntax کوئری‌ها کافی نیست؛ execution plan، index، transaction و isolation level را هم باید با مثال واقعی تمرین کرد. #education #postgresql #database"
+  },
+  {
+    "text": "برای فهم معماری نرم‌افزار، به جای حفظ کردن نام patternها، اول جریان داده، مرز مسئولیت‌ها و وابستگی بین اجزا را روی یک سیستم واقعی ترسیم کنید. #education #architecture #software-engineering"
+  },
+  {
+    "text": "در طراحی API، قرارداد ورودی و خروجی به اندازه implementation مهم است. API خوب باید رفتار خطا، اعتبارسنجی و محدودیت‌های خود را هم روشن کند. #education #api #backend"
+  },
+  {
+    "text": "Observability را از روز اول در نظر بگیرید. اگر بعد از رفتن به production تازه دنبال راهی برای فهمیدن علت خطا باشید، معمولاً داده کافی ندارید. #education #observability #production"
+  },
+  {
+    "text": "در سیستم‌های توزیع‌شده، timeout باید بخشی از طراحی باشد. بدون timeout، یک dependency کند می‌تواند resourceهای سرویس شما را برای مدت نامشخص اشغال کند. #software-engineering #distributed-systems #reliability"
+  },
+  {
+    "text": "گاهی یک سؤال درست، بیشتر از ده تا جواب سریع ارزش دارد. قبل از حل مسئله مطمئن شوید دقیقاً می‌دانید مسئله چیست. #education #problem-solving #learning"
+  },
+  {
+    "text": "اگر کدی را فقط خودت می‌توانی بفهمی، احتمالاً هنوز آن را به اندازه کافی ساده نکرده‌ای. #software-engineering #clean-code #programming"
+  },
+  {
+    "text": "Cache قرار نیست همه مشکلات performance را حل کند؛ گاهی فقط یک مشکل طراحی را سریع‌تر پنهان می‌کند. #backend #performance #cache #architecture"
+  },
+  {
+    "text": "وقتی latency بالا می‌رود، اولین واکنش نباید اضافه کردن server باشد. اول پیدا کنید bottleneck دقیقاً کجاست. #performance #backend #debugging"
+  },
+  {
+    "text": "اگر نمی‌توانی failure یک سرویس را توضیح بدهی، احتمالاً هنوز dependencyهایش را به اندازه کافی نمی‌شناسی. #architecture #distributed-systems #reliability"
+  },
+  {
+    "text": "Code Review قرار نیست مسابقه پیدا کردن غلط املایی باشد؛ هدف اصلی‌اش بهتر کردن design، readability و ریسک تغییرات است. #code-review #software-engineering"
+  },
+  {
+    "text": "گاهی بهترین optimization این است که یک کاری را اصلاً انجام ندهیم. قبل از بهینه‌سازی، مطمئن شوید آن پردازش واقعاً لازم است. #performance #engineering #optimization"
+  },
+  {
+    "text": "فرق developer باتجربه و کم‌تجربه همیشه در سرعت کدنویسی نیست؛ خیلی وقت‌ها در تعداد سؤال‌هایی است که قبل از کدنویسی می‌پرسند. #career #software-engineering #education"
+  },
+  {
+    "text": "وقتی همه‌چیز urgent است، در واقع هیچ‌چیز اولویت‌بندی نشده است. #management #product #work"
+  },
+  {
+    "text": "جلسه‌ای که با «فقط پنج دقیقه وقتتون رو می‌گیرم» شروع می‌شود، معمولاً پایان مشخصی در roadmap ندارد. #fun #work #developer-life"
+  },
+  {
+    "text": "امروز برای تمرکز رفتم سراغ یک کار ساده. سه دقیقه بعد در حال خواندن مستندات پروژه‌ای بودم که اصلاً ربطی به کارم نداشت. #fun #developer-life #programming"
+  },
+  {
+    "text": "هیچ‌کس به اندازه کسی که گفت «این آخرین تغییرته» تغییر آخر نمی‌دهد. #fun #programming #developer-life"
+  },
+  {
+    "text": "وقتی production سالم است، همه می‌گویند معماری عالی است. وقتی خراب می‌شود، ناگهان همه متخصص distributed systems می‌شوند. #fun #production #software-engineering"
+  },
+  {
+    "text": "گاهی آدم فقط می‌خواهد یک روز کامل هیچ notificationی نداشته باشد و با خیال راحت به سقف نگاه کند. #life #fun #digital-life"
+  },
+  {
+    "text": "بعضی روزها productivity یعنی فقط یک کار مهم را درست انجام بدهی و بقیه را برای فردا بگذاری. #life #productivity #work"
+  },
+  {
+    "text": "خبر فوری فقط یعنی خبر سریع‌تر منتشر شده؛ برای فهمیدن واقعیت، هنوز باید صبر کرد و منبع را بررسی کرد. #news #media #society"
+  },
+  {
+    "text": "در بحث سیاسی، تغییر نظر همیشه نشانه ضعف نیست. گاهی یعنی اطلاعات جدید واقعاً روی قضاوت ما اثر گذاشته است. #politics #society #critical-thinking"
+  },
+  {
+    "text": "اگر برای یک مسئله سیاسی فقط دو روایت کاملاً مخالف می‌بینی، احتمالاً بخش‌هایی از واقعیت بیرون از این دو روایت مانده است. #politics #media #critical-thinking"
+  },
+  {
+    "text": "سیاست فقط درباره آدم‌های سیاسی نیست؛ تصمیم‌های سیاسی روی قیمت، آموزش، فناوری، اینترنت و زندگی روزمره هم اثر می‌گذارند. #politics #society"
+  },
+  {
+    "text": "قبل از قضاوت درباره یک آمار، بپرسید: نسبت به چه چیزی؟ در چه بازه‌ای؟ با چه روشی اندازه‌گیری شده؟ #education #statistics #critical-thinking"
+  },
+  {
+    "text": "اگر یک مفهوم را نمی‌توانی با یک مثال ساده توضیح بدهی، شاید هنوز خودت آن را کامل نفهمیده‌ای. #education #learning #software-engineering"
+  },
+  {
+    "text": "یادگیری برنامه‌نویسی فقط با دیدن tutorial اتفاق نمی‌افتد؛ باید چیزی بسازی، خرابش کنی، خطایش را پیدا کنی و دوباره درستش کنی. #education #programming #learning"
+  },
+  {
+    "text": "بهترین راه یادگیری Debugging این نیست که همیشه جواب را سریع پیدا کنی؛ این است که یاد بگیری مسئله را به فرضیه‌های کوچک تبدیل کنی. #education #debugging #problem-solving"
+  },
+  {
+    "text": "REST، GraphQL یا هر تکنولوژی دیگری انتخاب اول نیستند؛ اول باید بفهمی کلاینت و سرور دقیقاً چه قراردادی با هم نیاز دارند. #education #api #architecture"
+  },
+  {
+    "text": "اگر database schema را فقط بر اساس مدل‌های UI طراحی کنید، احتمالاً با اولین تغییر در نیازمندی‌ها دردسر شروع می‌شود. #database #architecture #software-engineering"
+  },
+  {
+    "text": "امنیت معمولاً با یک feature واحد ساخته نمی‌شود؛ مجموعه‌ای از تصمیم‌های کوچک در authentication، authorization، validation و logging است. #security #backend #software-engineering"
+  },
+  {
+    "text": "یک سیستم خوب فقط وقتی همه‌چیز درست است خوب کار نمی‌کند؛ مهم‌تر این است که وقتی چیزی خراب شد، رفتار قابل پیش‌بینی داشته باشد. #reliability #architecture #software-engineering"
+  },
+  {
+    "text": "AI می‌تواند سرعت نوشتن کد را بالا ببرد، اما اگر نتوانی خروجی آن را بررسی کنی، سرعت تولید خطا هم بالا می‌رود. #ai #programming #software-engineering"
+  },
+  {
+    "text": "استفاده خوب از AI در برنامه‌نویسی یعنی سؤال خوب، context مناسب و review دقیق؛ نه صرفاً «این feature را برام بساز». #ai #education #programming"
+  },
+  {
+    "text": "گاهی بهترین جواب یک سؤال فنی این است: «نمی‌دانم؛ بگذار اول اندازه‌گیری کنیم.» مهندسی با حدس کمتر و evidence بیشتر بهتر می‌شود. #engineering #debugging #observability"
+  },
+  {
+    "text": "هرچه سیستم بزرگ‌تر می‌شود، naming خوب ارزش بیشتری پیدا می‌کند؛ چون بخش زیادی از فهم سیستم از روی اسم‌ها اتفاق می‌افتد. #clean-code #architecture #software-engineering"
+  }
+]
