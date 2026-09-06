@@ -4,6 +4,7 @@ export interface SessionPayload {
   userId: string;
   username: string;
   email: string;
+  role: string;
 }
 
 const secretKey = new TextEncoder().encode(

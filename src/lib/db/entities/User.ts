@@ -10,6 +10,11 @@ import {
 } from "typeorm";
 import { Post } from "./Post";
 
+export enum UserRole {
+  USER = "USER",
+  ADMIN = "ADMIN",
+}
+
 @Entity("users")
 export class User {
   @PrimaryGeneratedColumn("uuid")
@@ -34,6 +39,9 @@ export class User {
 
   @Column({ type: "text", nullable: true })
   bio?: string | null;
+
+  @Column({ type: "varchar", length: 20, default: UserRole.USER })
+  role!: string;
 
   @CreateDateColumn({ type: "timestamptz" })
   createdAt!: Date;

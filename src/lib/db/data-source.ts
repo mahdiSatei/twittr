@@ -5,6 +5,7 @@ dotenv.config();
 import { DataSource } from "typeorm";
 import { User } from "./entities/User";
 import { Post } from "./entities/Post";
+import { AuditLog } from "./entities/AuditLog";
 import path from "path";
 
 const isProduction = process.env.NODE_ENV === "production";
@@ -18,7 +19,7 @@ export const AppDataSource = new DataSource({
   database: process.env.POSTGRES_DB || "twitter",
   synchronize: false,
   logging: !isProduction,
-  entities: [User, Post],
+  entities: [User, Post, AuditLog],
   migrations: [path.join(__dirname, "./migrations/*.{ts,js}")],
   subscribers: [],
 });
