@@ -7,6 +7,8 @@ import { LoginSchema } from "@/lib/validations/auth.schema";
 import { comparePassword } from "@/lib/auth/password";
 import { signToken } from "@/lib/auth/jwt";
 import { buildAuthCookie } from "@/lib/auth/session";
+import { recordAudit } from "@/lib/audit/logger";
+import { AuditAction } from "@/lib/db/entities/AuditLog";
 
 export async function POST(req: NextRequest) {
   try {
@@ -14,10 +16,7 @@ export async function POST(req: NextRequest) {
     const validatedData = LoginSchema.safeParse(body);
 
     if (!validatedData.success) {
-      return NextResponse.json(
-        { message: validatedData.error.errors[0].message },
-        { status: 400 }
-      );
+      return NextResponse.json({ message: validatedData.error.errors[0].message }, { status: 400 });
     }
 
     const { identifier, password } = validatedData.data;
@@ -25,25 +24,28 @@ export async function POST(req: NextRequest) {
     const userRepo = db.getRepository(User);
 
     const user = await userRepo.findOne({
-      where: [
-        { email: identifier.toLowerCase() },
-        { username: identifier.toLowerCase() },
-      ],
+      where: [{ email: identifier.toLowerCase() }, { username: identifier.toLowerCase() }],
     });
 
-    if (!user) {
+    if (!user || !(await comparePassword(password, user.passwordHash))) {
       return NextResponse.json({ message: "Invalid credentials" }, { status: 401 });
     }
 
-    const isMatch = await comparePassword(password, user.passwordHash);
-    if (!isMatch) {
-      return NextResponse.json({ message: "Invalid credentials" }, { status: 401 });
-    }
+    // ثبت لاگ ورود
+    await recordAudit({
+      action: AuditAction.USER_LOGIN,
+      targetType: "AUTH",
+      targetId: user.id,
+      userId: user.id,
+      metadata: { username: user.username },
+      req,
+    });
 
     const token = await signToken({
       userId: user.id,
       username: user.username,
       email: user.email,
+      role: user.role || "USER",
     });
 
     const response = NextResponse.json({
@@ -53,7 +55,7 @@ export async function POST(req: NextRequest) {
         username: user.username,
         email: user.email,
         displayName: user.displayName,
-        avatarUrl: user.avatarUrl,
+        role: user.role,
       },
     });
 

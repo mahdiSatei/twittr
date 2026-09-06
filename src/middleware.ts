@@ -12,17 +12,32 @@ export async function middleware(request: NextRequest) {
   const token = request.cookies.get("auth_token")?.value;
 
   let isAuthenticated = false;
+  let userRole: string | null = null;
 
   if (token) {
     try {
-      await jwtVerify(token, secretKey);
+      const { payload } = await jwtVerify(token, secretKey);
       isAuthenticated = true;
+      userRole = (payload as any).role || "USER";
     } catch {
       isAuthenticated = false;
     }
   }
 
-  // Redirect unauthenticated users trying to access protected routes
+  // ۱. محافظت از مسیر پنل مدیریت (فقط ADMIN)
+  if (pathname.startsWith("/admin")) {
+    if (!isAuthenticated) {
+      const url = new URL("/login", request.url);
+      url.searchParams.set("from", pathname);
+      return NextResponse.redirect(url);
+    }
+    if (userRole !== "ADMIN") {
+      // کاربر عادی به اکسپلور هدایت می‌شود
+      return NextResponse.redirect(new URL("/explore", request.url));
+    }
+  }
+
+  // ۲. ریدایرکت کاربران احرازنشده به لاگین
   const isProtectedRoute = PROTECTED_ROUTES.some((route) => pathname.startsWith(route));
   if (isProtectedRoute && !isAuthenticated) {
     const url = new URL("/login", request.url);
@@ -30,7 +45,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // Redirect authenticated users trying to access login/register
+  // ۳. ریدایرکت کاربر لاگین‌شده از صفحات ورود/ثبت‌نام
   const isAuthRoute = AUTH_ROUTES.some((route) => pathname.startsWith(route));
   if (isAuthRoute && isAuthenticated) {
     return NextResponse.redirect(new URL("/explore", request.url));
@@ -40,5 +55,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/profile/edit", "/login", "/register"],
+  matcher: ["/admin/:path*", "/profile/edit", "/login", "/register"],
 };

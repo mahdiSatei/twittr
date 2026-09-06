@@ -5,6 +5,8 @@ import { getDb } from "@/lib/db/data-source";
 import { Post } from "@/lib/db/entities/Post";
 import { getSession } from "@/lib/auth/session";
 import { PostSchema } from "@/lib/validations/post.schema";
+import { recordAudit } from "@/lib/audit/logger";
+import { AuditAction } from "@/lib/db/entities/AuditLog";
 
 export async function GET(req: NextRequest) {
   try {
@@ -62,10 +64,7 @@ export async function POST(req: NextRequest) {
     const validatedData = PostSchema.safeParse(body);
 
     if (!validatedData.success) {
-      return NextResponse.json(
-        { message: validatedData.error.errors[0].message },
-        { status: 400 }
-      );
+      return NextResponse.json({ message: validatedData.error.errors[0].message }, { status: 400 });
     }
 
     const db = await getDb();
@@ -77,6 +76,16 @@ export async function POST(req: NextRequest) {
     });
 
     await postRepo.save(post);
+
+    // ثبت لاگ ایجاد پست
+    await recordAudit({
+      action: AuditAction.POST_CREATE,
+      targetType: "POST",
+      targetId: post.id,
+      userId: session.userId,
+      metadata: { preview: post.content.substring(0, 70) },
+      req,
+    });
 
     const savedPost = await postRepo.findOne({
       where: { id: post.id },
@@ -96,7 +105,6 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // TODO: Phase 2 - Emit real-time notification / update feed via WebSocket
     return NextResponse.json(savedPost, { status: 201 });
   } catch (error) {
     console.error("Create post error:", error);
