@@ -6,6 +6,9 @@ import { DataSource } from "typeorm";
 import { User } from "./entities/User";
 import { Post } from "./entities/Post";
 import { AuditLog } from "./entities/AuditLog";
+import { Reply } from "./entities/Reply";
+import { Like } from "./entities/Like";
+import { Follow } from "./entities/Follow"; // <--- حتماً ایمپورت شود
 import path from "path";
 
 const isProduction = process.env.NODE_ENV === "production";
@@ -19,7 +22,8 @@ export const AppDataSource = new DataSource({
   database: process.env.POSTGRES_DB || "twitter",
   synchronize: false,
   logging: !isProduction,
-  entities: [User, Post, AuditLog],
+  // حتماً تمام انتیتی‌ها در این آرایه باشند:
+  entities: [User, Post, AuditLog, Reply, Like, Follow],
   migrations: [path.join(__dirname, "./migrations/*.{ts,js}")],
   subscribers: [],
 });

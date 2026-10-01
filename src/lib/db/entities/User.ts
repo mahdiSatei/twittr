@@ -43,6 +43,10 @@ export class User {
   @Column({ type: "varchar", length: 20, default: UserRole.USER })
   role!: string;
 
+  // فیلد حریم خصوصی (پیش‌فرض عمومی یا false است)
+  @Column({ type: "boolean", default: false })
+  isPrivate!: boolean;
+
   @CreateDateColumn({ type: "timestamptz" })
   createdAt!: Date;
 
