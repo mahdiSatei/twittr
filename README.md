@@ -1,4 +1,4 @@
-# Twitter Clone (Phase 1)
+# Twitter Clone
 
 A Twitter-style social platform built with Next.js, TypeORM, and PostgreSQL. Includes an MCP (Model Context Protocol) server for AI-agent interaction.
 
@@ -17,6 +17,9 @@ A Twitter-style social platform built with Next.js, TypeORM, and PostgreSQL. Inc
 
 - User registration & login (JWT-based sessions)
 - Create, read, update, and delete posts
+- Like and reply to posts
+- Follow/unfollow users
+- Timeline feed
 - User profiles (view + edit)
 - File uploads
 - Explore feed
@@ -29,8 +32,8 @@ A Twitter-style social platform built with Next.js, TypeORM, and PostgreSQL. Inc
 src/
 ├── app/                # Next.js app router
 │   ├── (auth)/         # Login & register pages
-│   ├── (main)/         # Authenticated pages (explore, profile)
-│   └── api/            # API routes (posts, users, upload)
+│   ├── (main)/         # Authenticated pages (explore, timeline, profile)
+│   └── api/            # API routes (posts, users, timeline, like, reply, follow)
 ├── components/         # React components (posts, profile, layout)
 ├── lib/
 │   ├── auth/           # JWT, password hashing, sessions
